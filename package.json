@@ -1,0 +1,22 @@
+{
+  "name": "gunter-catalog-server",
+  "version": "1.0.0",
+  "description": "Back end API for Gunter Catalog app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adrielTosi/gunter-npc.git"
+  },
+  "author": "Adriel Tosi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adrielTosi/gunter-npc/issues"
+  },
+  "homepage": "https://github.com/adrielTosi/gunter-npc#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
