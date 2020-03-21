@@ -51,18 +51,21 @@ router.get("/npcs/:id", async (req, res) => {
  */
 router.patch("/npcs/:id", async (req, res) => {
   const validFields = ["name", "about"];
-  const isValidUpdate = validateUpdateFields(req.body, validFields);
+  const { isValidUpdate, updatesArray } = validateUpdateFields(
+    req.body,
+    validFields
+  );
 
   if (!isValidUpdate) {
     return res.status(400).send({ error: "Invalid update." });
   }
 
   try {
-    const npc = await Npc.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true
-    });
+    const npc = await Npc.findById(req.params.id);
     if (!npc) return res.status(404).send();
+
+    updatesArray.forEach(update => (npc[update] = req.body[update]));
+    npc.save();
 
     res.send(npc);
   } catch (e) {

@@ -5,8 +5,11 @@
  * @param {Array} validUpdates - Array of Fields contained in the original Model
  */
 const validateUpdateFields = (reqUpdates, validUpdates) => {
-  const updates = Object.keys(reqUpdates);
-  return updates.every(update => validUpdates.includes(update));
+  const updatesArray = Object.keys(reqUpdates);
+  const isValidUpdate = updatesArray.every(update =>
+    validUpdates.includes(update)
+  );
+  return { updatesArray, isValidUpdate };
 };
 
 module.exports = validateUpdateFields;
